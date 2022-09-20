@@ -1,6 +1,6 @@
 # Clean Chat
 
-![alt tag](https://github.com/mbasso/cleanChat/blob/master/screenshot.jpg)
+![alt tag](https://github.com/dave0xE7/cleanChat/blob/master/screenshot.png)
 
 Clean chat is a simple free chat. Choose a username, create or enter in a chat room, share chat link with friends and start talking in just a second!
 
