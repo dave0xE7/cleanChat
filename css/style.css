@@ -10,13 +10,13 @@ ul {
     margin-bottom: 0 !important;
 }
 
-.jumbotron {
+/* .jumbotron {
   background-color: #2196F3 !important;
 }
 
 .jumbotron h1, .jumbotron p{
 	color: white !important;
-}
+} */
 
 #loading{
     display: none;
@@ -42,21 +42,21 @@ ul {
     padding-left: 1em;
 }
 
-.no-margin{
+/* .no-margin{
     margin: 0 !important;
-}
+} */
 
-#messageBox{
+/* #messageBox{
     position:absolute;
     bottom:55;
     top:41;
-}
+} */
 
-#usersList{
+/* #usersList{
     position:absolute;
     bottom:0;
     top:41;
-}
+} */
 
 #share{
     cursor: pointer;
@@ -67,30 +67,30 @@ ul {
 }
 
 /* Override bootstrap style */
-.media {
+/* .media {
     margin-top: 0 !important;
-}
+} */
 
-.row, .col-md-8, .col-md-4, .panel-info, .panel-primary{
+/* .row, .col-md-8, .col-md-4, .panel-info, .panel-primary{
     height: 100% !important;
-}
+} */
 
-.col-md-8, .col-md-4{
+/* .col-md-8, .col-md-4{
     padding-top: 20px;
     padding-bottom: 20px;
-}
+} */
 
-.panel{
+/* .panel{
     position: relative;
-}
+} */
 
-.panel-footer{
+/* .panel-footer{
     position:absolute;
     bottom:0;
-}
+} */
 
 /* Button outline */
-
+/* 
 .btn.outline {
     background: none;
     padding: 12px 22px;
@@ -112,7 +112,7 @@ ul {
     border-color: white;
     color: transparent;
     box-shadow: none;
-}
+} */
 
 /*.btn {
     padding: 14px 24px;

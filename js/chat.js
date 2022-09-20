@@ -6,7 +6,7 @@ $(document).ready(function(){
 	});
 	$('#loginModal').modal('show');
 
-	var client = new Eureca.Client();
+	var client = new Eureca.Client({ uri: 'ws://'+location.host+'/', prefix: 'eureca.io', transport: 'sockjs' });
 	var server;
 	client.ready(function (proxy) {
 		server = proxy;
@@ -75,7 +75,7 @@ $(document).ready(function(){
 	});
 
 	var addUser = function(nick, color){
-		$('#usersList').append($('<li data-username="'+nick+'" class="media"><div class="media-body"><div class="media"><div class="media-body"><h5 style="color: '+color+'"><i class="fa fa-user"></i> '+nick+'</h5></div></div></div><hr/></li>'));
+		$('#usersList').append($('<li data-username="'+nick+'" class="list-group-item media"><div class="media-body"><div class="media"><div class="media-body"><h5 style="color: '+color+'"><i class="fa fa-user"></i> '+nick+'</h5></div></div></div><hr/></li>'));
 	}
 
 	var addMessage = function(nick, color, time, icon, isRemove){

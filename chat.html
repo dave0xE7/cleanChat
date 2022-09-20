@@ -5,13 +5,13 @@
 
     <link href="/css/style.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+	<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css"> 
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="/node_modules/jquery/dist/jquery.min.js"></script>
     
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+	<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 
     <script src="/eureca.js"></script>
 
@@ -24,21 +24,50 @@
 <body>
 
 
-  <div class="container">
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Clean Chat</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/#">Home</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" href="#">Chat</a>
+        </li>
+        <li class="nav-item">
+          <i class="nav-link" id="share">Invite</i>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        Anonymous Realtime Chat application 
+      </span>
+    </div>
+  </div>
+</nav>
+
+
+  <div class="container-fluid">
     <div class="row">
         <div class="col-md-8">
-            <div class="panel panel-info">
-                <div class="panel-heading">
+            <div class="card panel-info">
+                <div class="card-header">
                     <i class="fa fa-commenting"></i> Chat
                     <div class="btn-group pull-right">
                         <i id="share" class="fa fa-share-alt"> Invite</i>
                     </div>
                 </div>
-                <div class="panel-body">
-                    <ul id="messageBox" class="media-list scrollable"></ul>
+                <div class="card-body">
+                    <ul id="messageBox" class="list-group list-group-flush"></ul>
                 </div>
-                <div class="panel-footer">
-                    <form id="messageForm">
+                <!-- <div class="card-footer">
+					<form id="messageForm">
                         <div class="input-group">
                             <input id="message" type="text" autocomplete="off" class="form-control" placeholder="Enter Message" required/>
                             <span class="input-group-btn">
@@ -46,8 +75,9 @@
                             </span>
                         </div>
                     </form>
-                </div>
+				</div> -->
             </div>
+			
         </div>
 
 
@@ -57,11 +87,24 @@
                    <i class="fa fa-users"></i> Users
                 </div>
                 <div class="panel-body">
-                    <ul id="usersList" class="media-list scrollable"></ul>
+                    <!-- <ul id="usersList" class="media-list scrollable"></ul> -->
+					<ul id="usersList" class="list-group list-group-flush">
+					</ul>
                 </div>
             </div>
         </div>
     </div>
+
+	<div class="card fixed-bottom">
+		<form id="messageForm">
+			<div class="input-group">
+				<input id="message" type="text" autocomplete="off" class="form-control" placeholder="Enter Message" required/>
+				<span class="input-group-btn">
+					<button class="btn btn-info" type="submit"><i class="fa fa-paper-plane"></i> Send</button>
+				</span>
+			</div>
+		</form>
+	</div>
 
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
         <div class="modal-dialog" role="document">
@@ -93,7 +136,9 @@
                     <div class="modal-body">
                         <p>
                             Copy this link and send it to your friends:<br/><br/>
-                            <script type="text/javascript">document.write(window.location.href);</script>
+                        </p>
+						<p class="user-select-all">
+							<script type="text/javascript">document.write(window.location.href);</script>
                         </p>
                     </div>
                     <div class="modal-footer">

@@ -11,7 +11,7 @@ var connections = {};
 var rooms = {};
 
 var Eureca = require('eureca.io');
-var eurecaServer = new Eureca.Server({allow:['cleanChat.welcome', 'cleanChat.send', 'cleanChat.setUserList', 'cleanChat.removeUser', 'cleanChat.addUser']});
+var eurecaServer = new Eureca.Server({allow:['cleanChat.welcome', 'cleanChat.send', 'cleanChat.setUserList', 'cleanChat.removeUser', 'cleanChat.addUser'], transport: 'sockjs' });
 
 eurecaServer.attach(server);
 
@@ -26,12 +26,12 @@ app.get('/chat/:chatId', function (req, res, next) {
 
 
 eurecaServer.onConnect(function (connection) {
-    //console.log('New client ', connection.id, connection.eureca.remoteAddress);
+    console.log('New client ', connection.id, connection.eureca.remoteAddress);
 	connections[connection.id] = {nick:null, room:null, color:null, client:eurecaServer.getClient(connection.id)};
 });
 
 eurecaServer.onDisconnect(function (connection) { 
-    //console.log('Client quit', connection.id);
+    console.log('Client quit', connection.id);
 	cleanChatServer.removeUser(connections[connection.id].nick, connections[connection.id].room, connections[connection.id].color);
 	delete connections[connection.id];
 });
@@ -39,7 +39,7 @@ eurecaServer.onDisconnect(function (connection) {
 var cleanChatServer = eurecaServer.exports.cleanChatServer = {};
 
 cleanChatServer.login = function (nick, roomId) {
-	//console.log('Client %s auth with %s', this.connection.id, nick);
+	console.log('Client %s auth with %s', this.connection.id, nick);
 	var id = this.connection.id;
 	if (nick)
 	{
