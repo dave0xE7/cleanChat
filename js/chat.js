@@ -48,6 +48,10 @@ $(document).ready(function(){
 		addMessage(nick, color, time, 'in');
 	}
 
+	cleanChat.clearAllMessages = function () {
+		$('#messageBox').children().remove();
+	}
+
 	$('#loginForm').submit(function(e) {
 		if (!server)
 			return;
@@ -72,6 +76,11 @@ $(document).ready(function(){
 
 	$('#share').click(function() {
 		$('#inviteModal').modal('toggle');
+	});
+
+	$('#clear').click(function() {
+		//$('#inviteModal').modal('toggle');
+		server.cleanChatServer.clearAllMessages();
 	});
 
 	var addUser = function(nick, color){

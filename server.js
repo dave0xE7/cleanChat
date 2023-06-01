@@ -11,7 +11,7 @@ var connections = {};
 var rooms = {};
 
 var Eureca = require('eureca.io');
-var eurecaServer = new Eureca.Server({allow:['cleanChat.welcome', 'cleanChat.send', 'cleanChat.setUserList', 'cleanChat.removeUser', 'cleanChat.addUser'], transport: 'sockjs' });
+var eurecaServer = new Eureca.Server({allow:['cleanChat.welcome', 'cleanChat.send', 'cleanChat.setUserList', 'cleanChat.removeUser', 'cleanChat.addUser', 'cleanChat.clearAllMessages'], transport: 'sockjs' });
 
 eurecaServer.attach(server);
 
@@ -96,6 +96,17 @@ cleanChatServer.addUser = function(nick, room, color){
 			connections[c].client.cleanChat.addUser(nick, getFormattedDate(), color);
 	}
 
+}
+
+cleanChatServer.clearAllMessages = function (){
+    var sender = connections[this.connection.id];
+
+    for (var c in connections){
+        if (sender.room == connections[c].room)
+            connections[c].client.cleanChat.clearAllMessages();
+            connections[0].client.cleanChat.addMessage(sender.nick, "cleared the chat", getFormattedDate(), sender.color);
+    }
+    // cleanChatServer.send("chat was cleared");
 }
 
 server.listen(8000);
